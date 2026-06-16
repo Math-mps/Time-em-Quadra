@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Time em Quadra</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Time em Quadra">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">TQ</div>
+        <div>
+          <strong>Time em Quadra</strong>
+          <span>Gestão de vôlei</span>
+        </div>
+      </div>
+
+      <nav class="nav-list">
+        <span class="menu-label">Gestão do time</span>
+        <button class="nav-item active" data-screen="dashboard">Início</button>
+        <button class="nav-item" data-screen="presenca">Presença</button>
+        <button class="nav-item" data-screen="mural">Informativos</button>
+        <button class="nav-item" data-screen="coletivo">Equipe</button>
+        <button class="nav-item" data-screen="individual">Individual</button>
+        <button class="nav-item" data-screen="atletas">Elenco</button>
+        <button class="nav-item" data-screen="relatorios">Relatórios</button>
+      </nav>
+
+      <div class="access-links" aria-label="Acesso e downloads">
+        <span class="menu-label">Acesso</span>
+        <a class="download-link web-link" href="internet.html">
+          <span>Internet</span>
+          <strong>Acessar online</strong>
+        </a>
+        <a class="download-link" href="ios.html">
+          <span>iOS</span>
+          <strong>Baixar iPhone</strong>
+        </a>
+        <a class="download-link android-link" href="android.html">
+          <span>Android</span>
+          <strong>Baixar Android</strong>
+        </a>
+      </div>
+
+      <div class="role-switch" aria-label="Perfil de uso">
+        <span>Perfil</span>
+        <div class="segmented">
+          <button class="active" data-role="atleta">Jogador</button>
+          <button data-role="tecnico">Técnico</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Time masculino adulto</p>
+          <h1 id="pageTitle">Início</h1>
+        </div>
+        <div class="profile-pill">
+          <span class="status-dot"></span>
+          <span id="roleLabel">Visualizando como jogador</span>
+        </div>
+      </header>
+
+      <section class="screen active" id="dashboard">
+        <div class="dashboard-grid">
+          <section class="hero-panel">
+            <div class="hero-copy">
+              <p class="eyebrow">Próximo compromisso</p>
+              <h2>Treino técnico e transição defesa-ataque</h2>
+              <p>Quarta, 17/06/2026, às 20h. Ginásio Municipal.</p>
+              <div class="quick-actions">
+                <button class="primary-action" data-presence="Presente">Confirmar presença</button>
+                <button class="secondary-action" data-screen-link="presenca">Ver lista</button>
+              </div>
+            </div>
+            <div class="court-visual" aria-label="Diagrama de quadra de vôlei">
+              <svg viewBox="0 0 360 230" role="img">
+                <rect x="18" y="18" width="324" height="194" rx="6" fill="#f3d487"></rect>
+                <rect x="18" y="18" width="324" height="194" rx="6" fill="none" stroke="#1b4332" stroke-width="4"></rect>
+                <line x1="180" y1="18" x2="180" y2="212" stroke="#1b4332" stroke-width="5"></line>
+                <line x1="93" y1="18" x2="93" y2="212" stroke="#1b4332" stroke-width="2"></line>
+                <line x1="267" y1="18" x2="267" y2="212" stroke="#1b4332" stroke-width="2"></line>
+                <g fill="#f7f7f2" stroke="#14452f" stroke-width="3">
+                  <circle cx="55" cy="66" r="15"></circle>
+                  <circle cx="55" cy="164" r="15"></circle>
+                  <circle cx="132" cy="115" r="15"></circle>
+                  <circle cx="228" cy="66" r="15"></circle>
+                  <circle cx="305" cy="115" r="15"></circle>
+                  <circle cx="228" cy="164" r="15"></circle>
+                </g>
+                <path d="M112 56 C155 34, 205 34, 248 56" fill="none" stroke="#d9480f" stroke-width="5" stroke-linecap="round"></path>
+                <circle cx="260" cy="52" r="12" fill="#ffffff" stroke="#d9480f" stroke-width="3"></circle>
+              </svg>
+            </div>
+          </section>
+
+          <section class="metric-row">
+            <article class="metric-card">
+              <span>Presença média</span>
+              <strong>86%</strong>
+              <p>últimos 30 dias</p>
+            </article>
+            <article class="metric-card">
+              <span>Avisos cientes</span>
+              <strong>12/15</strong>
+              <p>comunicado atual</p>
+            </article>
+            <article class="metric-card">
+              <span>Fundamento em foco</span>
+              <strong>Passe</strong>
+              <p>semana atual</p>
+            </article>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Alertas do time</h2>
+              <button class="icon-button" data-screen-link="mural" title="Abrir mural" aria-label="Abrir mural">→</button>
+            </div>
+            <div class="notice-stack" id="dashboardNotices"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Evolução rápida</h2>
+              <button class="icon-button" data-screen-link="relatorios" title="Abrir relatórios" aria-label="Abrir relatórios">→</button>
+            </div>
+            <div class="skill-bars" id="dashboardSkills"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen" id="presenca">
+        <div class="split-layout">
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Eventos agendados</h2>
+              <span class="small-label">Confirmar status</span>
+            </div>
+            <div class="event-list" id="eventList"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Histórico de assiduidade</h2>
+              <span class="small-label">Resumo do mês</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Jogador</th>
+                    <th>Presenças</th>
+                    <th>Faltas</th>
+                    <th>Justificadas</th>
+                    <th>Assiduidade</th>
+                  </tr>
+                </thead>
+                <tbody id="attendanceTable"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen" id="mural">
+        <section class="panel">
+          <div class="section-heading">
+            <h2>Informativos</h2>
+            <button class="primary-action admin-only">Novo aviso</button>
+          </div>
+          <div class="notice-grid" id="noticeGrid"></div>
+        </section>
+      </section>
+
+      <section class="screen" id="coletivo">
+        <div class="split-layout">
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Registro coletivo</h2>
+              <span class="small-label">Pós-treino e pós-jogo</span>
+            </div>
+            <div class="collective-list" id="collectiveList"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Plano do próximo treino</h2>
+              <span class="small-label">Prioridades</span>
+            </div>
+            <ul class="focus-list">
+              <li><strong>Passe:</strong> estabilizar recepção em saque flutuante.</li>
+              <li><strong>Bloqueio:</strong> ajustar tempo nas extremidades.</li>
+              <li><strong>Comunicação:</strong> chamada clara em bola de segunda.</li>
+              <li><strong>Transição:</strong> saída rápida após defesa no fundo.</li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen" id="individual">
+        <div class="athlete-toolbar">
+              <label for="athleteSelect">Jogador</label>
+          <select id="athleteSelect"></select>
+        </div>
+        <div class="individual-grid">
+          <section class="panel">
+            <div class="section-heading">
+              <h2 id="athleteName">Perfil técnico</h2>
+              <span class="small-label" id="athleteRole"></span>
+            </div>
+            <div class="radar-card">
+              <svg id="radarChart" viewBox="0 0 260 260" role="img" aria-label="Radar de fundamentos"></svg>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Fundamentos</h2>
+              <span class="small-label">Notas de 0 a 10</span>
+            </div>
+            <div class="skill-bars" id="individualSkills"></div>
+          </section>
+          <section class="panel wide-panel">
+            <div class="section-heading">
+              <h2>Observações</h2>
+              <button class="secondary-action admin-only">Adicionar feedback</button>
+            </div>
+            <div class="observation-box" id="observationBox"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen" id="atletas">
+        <div class="split-layout">
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Incluir jogador</h2>
+              <span class="small-label">Cadastro do time</span>
+            </div>
+            <form class="athlete-form" id="athleteForm">
+              <label>
+                Nome do jogador
+                <input id="newAthleteName" type="text" placeholder="Ex: Ana Clara" autocomplete="off" required>
+              </label>
+              <label>
+                Posição
+                <select id="newAthleteRole">
+                  <option>Ponteiro</option>
+                  <option>Oposto</option>
+                  <option>Levantador</option>
+                  <option>Central</option>
+                  <option>Líbero</option>
+                  <option>Universal</option>
+                </select>
+              </label>
+              <button class="primary-action" type="submit">Adicionar jogador</button>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Elenco cadastrado</h2>
+              <span class="small-label" id="athleteCount"></span>
+            </div>
+            <div class="athlete-list" id="athleteList"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen" id="relatorios">
+        <section class="panel">
+          <div class="section-heading report-heading">
+            <div>
+              <h2>Relatório de desempenho</h2>
+              <p>Frequência, evolução técnica e leitura coletiva em uma visão única.</p>
+            </div>
+            <div class="segmented report-filter">
+              <button class="active" data-report="jogo">Por jogo</button>
+              <button data-report="semanal">Semanal</button>
+              <button data-report="mensal">Mensal</button>
+            </div>
+          </div>
+          <div id="reportContent"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
